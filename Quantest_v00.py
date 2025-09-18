@@ -56,17 +56,8 @@ st.set_page_config(page_title="[Quantest] 퀀트 백테스트 프레임워크", 
 @st.cache_data
 def load_Stock_list():
     try:
-        # 프로그램(.exe 또는 .py)이 있는 폴더의 경로를 찾습니다.
-        if getattr(sys, 'frozen', False):
-            application_path = os.path.dirname(sys.executable)
-        else:
-            application_path = os.path.dirname(os.path.abspath(__file__))
-
-        # 폴더 경로와 파일 이름을 합쳐 정확한 파일 경로를 만듭니다.
-        csv_path = os.path.join(application_path, 'Stock_list.csv')
-
-        # 완성된 경로를 이용해 CSV 파일을 읽습니다.
-        df = pd.read_csv(csv_path, encoding='cp949')
+        # --- 이 부분을 수정합니다 ---
+        df = pd.read_csv('Stock_list.csv', encoding='cp949')
         # --- 여기까지 ---
         df['display'] = df['Ticker'] + ' - ' + df['Name']
         return df
